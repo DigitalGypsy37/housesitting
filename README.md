@@ -11,6 +11,3 @@ To enable GitHub Pages: **Settings → Pages → Build and deployment → Source
 This published version **intentionally leaves out** the door code, Wi-Fi password, and personal phone numbers, because a GitHub Pages site is **public**. Those details are shared with the sitter directly.
 
 Do **not** commit the full-detail print PDF (the one containing the code and numbers) to this public repo — keep it private and hand it to the sitter separately.
-
-## Editing
-All content lives in the `SECTIONS` and `CONTACTS` arrays inside the `<script>` block near the bottom of `index.html`. Edit the text there and re-commit; the page re-renders automatically.
