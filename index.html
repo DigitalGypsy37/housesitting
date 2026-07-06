@@ -415,10 +415,18 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet()
    Set your password by replacing PW_HASH below with the SHA-256 hash of your chosen
    password. To generate a new hash, run in a terminal:
      printf %s "your-password" | shasum -a 256
-   Default password is: welcome-natalie
-   Note: this is a light deterrent, not real security — anyone technical can read the
-   page source. The door code, Wi-Fi password, and phone numbers are shared separately. */
-var PW_HASH = "068757c5709a4b3049ffb0199197b3ed34720139b06819876f921acd4b6840b6";
+   Current password is: housesitting-guide
+
+   KNOWN-INSECURE / DETERRENT ONLY — this is deliberate, not an oversight:
+   - This gate hides content with CSS only. Anyone technical can read the full guide
+     straight from the page source or this public repo — the password does not stop them.
+   - The stored value is a SHA-256 hash, not the plaintext password, but on a public
+     repo an unsalted hash of a simple password is crackable offline. That's fine here.
+   - We accept all of the above ON PURPOSE: nothing in this repo is actually private.
+     The real secrets — door code, Wi-Fi password, phone numbers — are NEVER stored here
+     and are shared with the sitter separately. This gate is just a friendly "you're in
+     the right place" deterrent for the public URL, not real access control. */
+var PW_HASH = "fb4c382d0f0aaa19acfc5b2ac96d83801418a6ec010424a39cbc78e19140b092";
 var gateEl=document.getElementById("gate");
 var gateForm=document.getElementById("gateForm");
 var gatePw=document.getElementById("gatePw");
