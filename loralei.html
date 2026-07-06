@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>House &amp; Dog Guide · Jax &amp; JoJo</title>
+<script>
+  // Lock immediately (before the page paints) unless already unlocked this session.
+  if (sessionStorage.getItem("houseUnlocked") !== "1") {
+    document.documentElement.className += " locked";
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- ============================================================= -->
+<!--  HOMEOWNER — FILL IN YOUR DETAILS                             -->
+<!--  Everything is written text. Replace the bits marked           -->
+<!--  "Will be provided" and add phone numbers to the CONTACTS list.-->
+<!-- ============================================================= -->
+
+<style>
+  :root{
+    --paper:#F3F5EF;--card:#FFF;--ink:#1E3A32;--ink-soft:#516459;
+    --honey:#D9992B;--honey-deep:#A9711A;--clay:#BC5142;--clay-bg:#F8ECE9;
+    --sage-bg:#E9EFE6;--line:#E2E7DD;--scrim:rgba(20,32,27,.52);
+    --shadow:0 1px 2px rgba(30,58,50,.06),0 6px 20px rgba(30,58,50,.07);--radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Instrument Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.58;
+    -webkit-font-smoothing:antialiased;padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+  .wrap{max-width:540px;margin:0 auto;padding:0 18px}
+
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(243,245,239,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:10px;height:54px}
+  .brandmark{width:30px;height:30px;border-radius:9px;flex:0 0 auto;background:var(--ink);
+    color:var(--paper);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:16px}
+  .brandtxt{font-weight:600}
+  .brandtxt small{display:block;font-weight:400;font-size:12px;color:var(--ink-soft)}
+
+  .tabs{position:sticky;top:54px;z-index:19;background:rgba(243,245,239,.9);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tabs .wrap{display:flex;gap:8px;padding:7px 18px}
+  .tabs a{flex:1;text-align:center;text-decoration:none;font-family:inherit;font-size:14px;
+    font-weight:600;padding:9px 10px;border-radius:11px;color:var(--ink-soft);
+    border:1px solid transparent;transition:color .15s,background .15s,border-color .15s}
+  .tabs a:hover{color:var(--honey-deep)}
+  .tabs a[aria-current="page"]{background:var(--card);color:var(--ink);
+    border-color:var(--line);box-shadow:var(--shadow)}
+
+  .hero{padding:28px 0 4px}
+  .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--honey-deep);margin:0 0 12px}
+  .hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(29px,8.5vw,38px);
+    line-height:1.1;letter-spacing:-.01em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--honey-deep)}
+  .hero p{margin:0;color:var(--ink-soft);font-size:16px}
+  .dates{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:var(--sage-bg);
+    border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+  .howto{margin:16px 0 2px;font-size:14px;color:var(--ink-soft)}
+  .howto b{color:var(--ink)}
+
+  .chips{display:flex;gap:8px;overflow-x:auto;padding:16px 18px 6px;margin:6px -18px 0;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:500;white-space:nowrap;
+    text-decoration:none;cursor:pointer;transition:border-color .15s,color .15s}
+  .chip:hover{border-color:var(--honey);color:var(--honey-deep)}
+
+  .daily{margin:18px 0 6px;background:var(--ink);color:#EAF1EC;border-radius:var(--radius);
+    padding:20px;box-shadow:var(--shadow)}
+  .daily h2{font-family:"Fraunces",serif;font-weight:600;font-size:19px;margin:0 0 12px;color:#fff}
+  .daily ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .daily li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .tick{flex:0 0 auto;width:22px;height:22px;border-radius:7px;margin-top:1px;
+    background:rgba(217,153,43,.18);border:1px solid rgba(217,153,43,.55);color:var(--honey);
+    display:grid;place-items:center;font-size:12px;font-weight:700}
+  .daily li b{color:#fff}
+
+  .sections{margin-top:20px;display:grid;gap:12px}
+  details.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:13px;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  .marker{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:var(--sage-bg);
+    display:grid;place-items:center;font-size:19px}
+  .card.alert .marker{background:var(--clay-bg)}
+  .s-head{flex:1 1 auto;min-width:0}
+  .s-title{font-weight:600;font-size:16.5px}
+  .s-sum{font-size:13.5px;color:var(--ink-soft);margin-top:1px;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .chev{flex:0 0 auto;color:var(--ink-soft);transition:transform .2s;font-size:13px}
+  details[open] .chev{transform:rotate(90deg)}
+  .body{padding:0 18px 18px}
+  .body>*+*{margin-top:12px}
+
+  .note{font-size:15px}.note.muted{color:var(--ink-soft)}
+  .b{color:var(--honey-deep);font-style:italic;font-weight:600}
+  ul.pts{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  ul.pts li{position:relative;padding-left:19px;font-size:15px}
+  ul.pts li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;
+    border-radius:50%;background:var(--honey)}
+  .callout{border-radius:13px;padding:13px 15px;font-size:14.5px}
+  .callout .ct{font-weight:600;margin-bottom:5px}
+  .callout.warn{background:var(--clay-bg);border:1px solid #EAD2CD}.callout.warn .ct{color:var(--clay)}
+  .callout.soft{background:var(--sage-bg)}.callout.soft .ct{color:var(--honey-deep)}
+  .callout p{margin:0 0 6px}.callout p:last-child{margin:0}
+
+  .sos{position:fixed;left:0;right:0;bottom:0;z-index:30;
+    padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top,var(--paper) 62%,rgba(243,245,239,0));pointer-events:none}
+  .sos .wrap{max-width:540px;margin:0 auto;pointer-events:auto}
+  .sosbtn{width:100%;border:0;cursor:pointer;background:var(--clay);color:#fff;border-radius:15px;
+    padding:15px;font-family:inherit;font-size:16px;font-weight:600;display:flex;align-items:center;
+    justify-content:center;gap:10px;box-shadow:0 6px 22px rgba(188,81,66,.34)}
+  .sosbtn:active{transform:translateY(1px)}
+  .sheet-scrim{position:fixed;inset:0;z-index:40;background:var(--scrim);opacity:0;visibility:hidden;transition:opacity .22s}
+  .sheet-scrim.open{opacity:1;visibility:visible}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--paper);
+    border-radius:22px 22px 0 0;padding:8px 0 calc(20px + env(safe-area-inset-bottom));
+    transform:translateY(100%);transition:transform .28s cubic-bezier(.22,1,.36,1);max-height:86vh;overflow-y:auto}
+  .sheet.open{transform:translateY(0)}
+  .grab{width:40px;height:4px;border-radius:99px;background:#CBD5C7;margin:8px auto 6px}
+  .sheet h2{font-family:"Fraunces",serif;font-weight:600;font-size:22px;margin:6px 18px 2px}
+  .sheet .lead{margin:0 18px 12px;color:var(--ink-soft);font-size:14px}
+  .contact{display:flex;align-items:center;gap:14px;margin:0 12px;padding:13px 12px;border-radius:14px;
+    text-decoration:none;color:var(--ink)}
+  .contact+.contact{border-top:1px solid var(--line);border-radius:0}
+  .contact .ci{width:38px;height:38px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
+    font-size:18px;background:var(--sage-bg)}
+  .contact.urgent .ci{background:var(--clay-bg)}
+  .contact .cname{font-weight:600;font-size:15.5px}
+  .contact .cmeta{font-size:13.5px;color:var(--ink-soft)}
+  .contact .cval{margin-left:auto;font-weight:600;color:var(--honey-deep);font-size:14px;text-align:right}
+  .sheet .fineprint{margin:14px 20px 0;font-size:12.5px;color:var(--ink-soft)}
+
+  footer{padding:24px 0 6px;text-align:center;color:var(--ink-soft);font-size:13px}
+  footer .heart{color:var(--clay)}
+  :focus-visible{outline:2.5px solid var(--honey);outline-offset:2px;border-radius:6px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ---- Password gate ---- */
+  html.locked{overflow:hidden}
+  html.locked body>*:not(#gate){display:none!important}
+  #gate{position:fixed;inset:0;z-index:100;background:var(--paper);
+    display:none;place-items:center;padding:24px}
+  html.locked #gate{display:grid}
+  .gate-card{width:100%;max-width:360px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 24px;text-align:center}
+  .gate-card .brandmark{margin:0 auto 16px}
+  .gate-card h1{font-family:"Fraunces",serif;font-weight:600;font-size:24px;margin:0 0 6px}
+  .gate-card p{margin:0 0 18px;color:var(--ink-soft);font-size:14.5px}
+  .gate-card form{display:flex;flex-direction:column;gap:10px}
+  .gate-card input{font-family:inherit;font-size:16px;padding:13px 15px;border:1px solid var(--line);
+    border-radius:13px;background:var(--paper);color:var(--ink);text-align:center}
+  .gate-card button{font-family:inherit;font-size:16px;font-weight:600;padding:13px;border:0;
+    border-radius:13px;background:var(--ink);color:var(--paper);cursor:pointer}
+  .gate-card button:active{transform:translateY(1px)}
+  .gate-err{min-height:18px;font-size:13.5px;color:var(--clay);font-weight:500}
+</style>
+</head>
+<body>
+
+<div id="gate" role="dialog" aria-modal="true" aria-label="Password required">
+  <div class="gate-card">
+    <div class="brandmark">🐾</div>
+    <h1>Jax &amp; JoJo</h1>
+    <p>This guide is private. Enter the password Loralei shared with you.</p>
+    <form id="gateForm">
+      <input id="gatePw" type="password" inputmode="text" autocomplete="off"
+             autocapitalize="off" spellcheck="false" placeholder="Password" aria-label="Password" />
+      <button type="submit">Unlock</button>
+      <div class="gate-err" id="gateErr" role="alert"></div>
+    </form>
+  </div>
+</div>
+
+<div class="topbar"><div class="wrap">
+  <div class="brandmark">🐾</div>
+  <div class="brandtxt">Jax &amp; JoJo<small>House &amp; dog sitting guide</small></div>
+</div></div>
+
+<nav class="tabs" aria-label="Choose a guide"><div class="wrap">
+  <a href="index.html">Hunnewell Guide</a>
+  <a href="loralei.html" aria-current="page">Loralei Guide</a>
+</div></nav>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Welcome &amp; thank you</p>
+    <h1>Thank you for <em>helping out.</em></h1>
+    <p>Everything you need to keep the house and the two dogs — Jax &amp; JoJo — happy is below. Tap any card to open it.</p>
+    <div class="dates">🐕 <span><b>Two dogs:</b> Jax &amp; JoJo · routine little guys</span></div>
+    <p class="howto">Read it through once before your first day, then use it as a reference. The red button at the bottom is for contacts &amp; emergencies — always there.</p>
+  </header>
+
+  <nav class="chips" id="chips" aria-label="Jump to a topic"></nav>
+
+  <section class="daily" aria-label="The most important things">
+    <h2>The most important things</h2>
+    <ul>
+      <li><span class="tick">✓</span><span><b>Always keep the driveway gate shut</b> — Jax will bolt into the street if it's open.</span></li>
+      <li><span class="tick">✓</span><span><b>Jax eats ONLY his special food</b> — no people food, no JoJo's food, nothing off the ground.</span></li>
+      <li><span class="tick">✓</span><span><b>Keep the house cool</b> — no A/C, so windows &amp; blinds close once it hits 70°F.</span></li>
+      <li><span class="tick">✓</span><span><b>Don't let Jax sneak JoJo's food</b> — it gives him diarrhea.</span></li>
+      <li><span class="tick">✓</span><span><b>Watch the French-door screen</b> — keep the barrier in front so the dogs don't run through it.</span></li>
+    </ul>
+  </section>
+
+  <main class="sections" id="sections"></main>
+  <footer>Made with a little <span class="heart">♥</span> for Jax, JoJo &amp; the house.</footer>
+</div>
+
+<div class="sos"><div class="wrap">
+  <button class="sosbtn" id="sosBtn" aria-haspopup="dialog">📞 Contacts &amp; emergencies — tap here</button>
+</div></div>
+<div class="sheet-scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Emergency contacts">
+  <div class="grab"></div>
+  <h2>Contacts &amp; access</h2>
+  <p class="lead">Tap a number to call. When unsure, reach out — text anytime.</p>
+  <div id="contacts"></div>
+  <p class="fineprint">Sensitive details (door code, my cell, vet number, Jax's medication) are shared with you directly, not on this page.</p>
+</aside>
+
+<script>
+/* ---- YOUR CONTENT: swap "Will be provided" for real details ---- */
+
+const CONTACTS = [
+  { icon:"📞", name:"Loralei",            meta:"Homeowner · text anytime",            value:"Will be provided", tel:"", urgent:false },
+  { icon:"🏥", name:"Vet",                meta:"Jax & JoJo's vet",                    value:"Will be provided", tel:"", urgent:true },
+  { icon:"💊", name:"Jax's medication",   meta:"Name, dose & timing · shown in person",value:"Will be provided", tel:"", urgent:false },
+  { icon:"🏠", name:"Kevin & Gina",       meta:"Next-door neighbors · friendly backup",value:"Will be provided", tel:"", urgent:false },
+];
+
+// In prose, wrap the bits you'll personalise like this:  <span class="b">[LIKE THIS]</span>
+const SECTIONS = [
+  { id:"dogs", tag:"The dogs", icon:"🐕", alert:false,
+    title:"Meet Jax & JoJo", summary:"Who they are & what to watch for",
+    blocks:[
+      { type:"prose", html:'<b>Jax</b> — about <b>10½ years old</b>. He has a <b>special medication</b> and a <b>strict special diet</b> (details shown in person). He can’t process normal food the way most dogs can, so his diet is strict. Sweet older guy — he <em>used</em> to dart out the door and run into the street (his “chase me” game), which is what the gate rule is mostly about.' },
+      { type:"prose", html:'Jax is prone to an <b>upset stomach and gas</b> — please keep him from eating plants, bushes, or anything off the ground outside.' },
+      { type:"prose", html:'<b>JoJo</b> — the smaller one. Eats <b>regular Blue (Blue Buffalo)</b> food. He’s a <b>shy eater</b> and won’t eat if he thinks you’re watching him (more in Feeding).' },
+    ]},
+  { id:"feeding", tag:"Feeding", icon:"🍽️", alert:false,
+    title:"Feeding", summary:"Twice a day · separate bowls · don't stare at JoJo",
+    blocks:[
+      { type:"prose", html:'<b>Schedule.</b> Feed <b>twice a day</b>, morning and evening. Morning is anytime between <b>5:30 and 8:00 a.m.</b> (best is 6–7 a.m.), and the same window in the evening. A little earlier or later is totally fine — don’t worry about being exact.' },
+      { type:"prose", html:'<b>Jax’s meals.</b> <b>1½ cans in the morning, 1½ cans at night.</b> His food is the <b>World Canaan</b> food — dense and hard-packed. <b>This is the only thing he can eat: no people food, no other dog food, nothing.</b>' },
+      { type:"pts", items:[
+        "Straight from the fridge it can be hard — <b>break it into small pieces</b> (sometimes it takes two spoons to split it up).",
+        "If the chunks are too big, he’ll carry them to the rug and drop them there — small pieces keep him eating from the bowl.",
+        "In his metal bowl, his food usually fills up to <b>about halfway</b>.",
+        "There’s <b>plenty of Jax’s food stocked</b> — enough for your whole stay and after. I’ll show you where it is.",
+      ]},
+      { type:"prose", html:'<b>JoJo’s meals.</b> <b>Regular Blue (Blue Buffalo)</b> food in his metal bowl.' },
+      { type:"prose", html:'<b>Where each dog eats — this matters!</b> <b>JoJo eats in his corner</b> (I’ll show you the spot). <b>Jax’s bowl goes on the floor next to the water.</b> They are <b>not allowed to eat from each other’s bowls</b> — Jax eating JoJo’s food gives Jax diarrhea.' },
+      { type:"prose", html:'<b>The routine.</b> These two are very routine-driven, so here’s the trick:' },
+      { type:"pts", items:[
+        "Dish out both bowls and set them in their spots.",
+        "<b>Don’t stand and stare at JoJo</b> — he won’t eat if he’s watched. Pretend you’re busy: do dishes, make coffee, tidy up nearby.",
+        "<b>But keep half an eye out</b> so Jax doesn’t sneak over to JoJo’s bowl.",
+        "Eating usually takes <b>5–10 minutes</b>.",
+      ]},
+      { type:"callout", tone:"warn", title:"🤍 If they don’t eat", lines:[
+        "This is <b>normal</b>, especially at first — they don’t know you yet and are used to my routine.",
+        "Don’t stress if they walk away. Cover the bowl with aluminum foil, put it in the fridge, and offer it again next time. Jax will poke his nose at you when he’s ready — feed him then.",
+        "<b>Only be concerned if they haven’t eaten for a few days.</b> A skipped meal or two is nothing to worry about."
+      ]},
+      { type:"prose", html:'<b>Water.</b> I fill their water from the <b>Brita</b>. Keep the bowl <b>at least half full every day</b> (fill to the usual line) and <b>clean it about once a week</b>. They usually drink a full bowl down over ~15–20 minutes.' },
+    ]},
+  { id:"cool", tag:"Keeping cool", icon:"🌡️", alert:true,
+    title:"Keeping the house cool (no A/C!)", summary:"Close up at 70°F · open at 80°F or lower",
+    blocks:[
+      { type:"note", text:"The house has no air conditioning, and the dogs — especially older Jax — can overheat. Here’s the daily routine on warm days." },
+      { type:"prose", html:'<b>1. Check the weather each morning</b> (I use the Weather Bug app for the hourly forecast).' },
+      { type:"prose", html:'<b>2. Once it’s going to hit 70°F, close the house up:</b>' },
+      { type:"pts", items:[
+        "Shut <b>all the windows</b> (bedrooms and bathroom included).",
+        "Draw <b>all the blinds and shades</b>.",
+        "Sometimes shut the bedroom door too.",
+      ]},
+      { type:"prose", html:'<b>3. Turn on the fans</b> — always keep <b>one fan aimed at the couch</b>. Done right, the house stays cool and Jax won’t even pant.' },
+      { type:"prose", html:'<b>Opening back up.</b> Don’t open anything until it’s dropped to <b>80°F or lower</b> outside (sometimes wait a little longer). It usually starts warming up around <b>5 p.m.</b>, and in summer I often wait until <b>6–7 p.m.</b> to open up, depending on the day. If it’s creeping up to ~90°F you’ll see Jax start to pant — that’s your cue the house needs to stay closed.' },
+      { type:"callout", tone:"soft", title:"💡 Midday check-in", lines:[
+        "If the house is closed up and you’re coming and going from next door, it’ll hold its cool for a while.",
+        "If you can, <b>swing by around midday</b> to let the dogs out (so they don’t pee in the kitchen), then bring them back in. <b>Don’t let Jax lie out in the sun.</b>"
+      ]},
+    ]},
+  { id:"gate", tag:"Gate", icon:"🚪", alert:true,
+    title:"The driveway gate", summary:"Keep it shut at all times · Jax bolts",
+    blocks:[
+      { type:"prose", html:'<b>Keep the gate across the driveway shut at all times.</b> Every time you walk in or out, <b>double-check it latched behind you</b>.' },
+      { type:"prose", html:'Jax is 10 now and may not bolt like he used to — but don’t risk it. That road gets busy on weekdays (locals use it as a cut-through), and he likes to stand in the street and play “chase me.”' },
+    ]},
+  { id:"frenchdoors", tag:"French doors", icon:"🪟", alert:false,
+    title:"French doors & screen", summary:"Keep the barrier in front · close the screen slowly",
+    blocks:[
+      { type:"prose", html:'There’s a <b>screen for the French doors</b>. <b>Keep the barrier propped in front of the screen</b> so the dogs don’t run <em>through</em> it by mistake — both dogs have done this before and got badly spooked.' },
+      { type:"prose", html:'<b>Close the screen slowly</b> — it can start to bend. If it bends, just <b>pull it out and slide it back in</b> again.' },
+      { type:"note", text:"The pooper scooper lives next to the French doors." },
+    ]},
+  { id:"laundry", tag:"Laundry", icon:"🧺", alert:false,
+    title:"Laundry", summary:"You're welcome to use it · detergent provided",
+    blocks:[
+      { type:"prose", html:'<b>Washer.</b> Sometimes it <b>won’t start on its own</b> — you may have to keep pressing the button until it locks and starts. Near the <b>end of the cycle it gets loud</b> (the belt is going out) — nothing to worry about. <b>Laundry detergent is provided</b>, no need to bring your own.' },
+      { type:"prose", html:'<b>Dryer.</b> Please run it <b>early in the morning (while it’s cool) or later in the evening</b> — it adds heat to the house. <b>Open a door/window while it runs</b> so the air circulates. <b>Dryer sheets are provided</b>, unless you prefer your own.' },
+    ]},
+  { id:"plant", tag:"The plant", icon:"🌱", alert:false,
+    title:"The plant (please be gentle)", summary:"Precious · grow light red button · no watering",
+    blocks:[
+      { type:"prose", html:'There’s one plant that’s <b>very precious to me</b> — I’ve had it since it was tiny, so I’m a little superstitious about it. <b>Please just try not to knock it over.</b>' },
+      { type:"prose", html:'<b>If you draw the blinds</b>, turn on the <b>grow light</b> by pressing the <b>red button</b> at the base so the plants still get “sun.” Otherwise they start to fade.' },
+      { type:"note", text:"No need to water it — I’ll take care of watering before I leave." },
+    ]},
+  { id:"gardener", tag:"Gardener", icon:"🌳", alert:false,
+    title:"The gardener", summary:"May come by · asked to skip the backyard",
+    blocks:[
+      { type:"prose", html:'The gardener may come by, but I’ll ask them to <b>skip the backyard</b> while I’m away. They’re not expected for a couple of weeks anyway, so you likely won’t see them.' },
+    ]},
+  { id:"neighbors", tag:"Neighbors", icon:"🏡", alert:false,
+    title:"Next-door neighbors", summary:"Kevin & Gina · friendly backup",
+    blocks:[
+      { type:"prose", html:'<b>Kevin &amp; Gina</b> live right next door — friendly backup if you need a hand. They have an <b>Anatolian-mix dog</b>. Our dogs sniff each other through the fence but haven’t played together, so keep them separate.' },
+      { type:"note", text:"Their contact info is shared with you separately.", muted:true },
+    ]},
+  { id:"schedule", tag:"Schedule", icon:"📆", alert:false,
+    title:"About the sitting schedule", summary:"Parker is primary · you're the backup",
+    blocks:[
+      { type:"prose", html:'<b>Parker</b> is the primary sitter (staying weeks 1, 2, and 3). You’re the <b>backup</b> — thank you! If anything comes up with Parker, the <b>midday check-in routine</b> (see Keeping the house cool) is the main thing.' },
+    ]},
+  { id:"contacts", tag:"Contacts", icon:"📞", alert:false,
+    title:"Contacts & access", summary:"House entry, medication, vet — shared in person",
+    blocks:[
+      { type:"prose", html:'The sensitive details below are <b>shared with you directly</b>, not on this page:' },
+      { type:"pts", items:[
+        "<b>House access / entry</b> and any <b>alarm / passcodes</b>.",
+        "<b>My cell phone.</b>",
+        "<b>Jax’s medication</b> — name, dose, and timing (shown in person).",
+        "<b>Location of Jax’s food &amp; supplies</b> (shown in person).",
+        "<b>Vet name &amp; number</b>, and <b>Kevin &amp; Gina’s</b> contact info.",
+      ]},
+      { type:"note", text:"Tap the red button at the bottom anytime for the contacts list.", muted:true },
+    ]},
+];
+
+/* ---- rendering (no need to edit) ---- */
+function renderBlock(b){
+  switch(b.type){
+    case "prose": return '<p class="note">'+b.html+'</p>';
+    case "note": return '<p class="note '+(b.muted?"muted":"")+'">'+b.text+'</p>';
+    case "pts": return '<ul class="pts">'+b.items.map(function(i){return "<li>"+i+"</li>"}).join("")+'</ul>';
+    case "callout": return '<div class="callout '+(b.tone==="warn"?"warn":"soft")+'"><div class="ct">'+b.title+'</div>'+b.lines.map(function(l){return "<p>"+l+"</p>"}).join("")+'</div>';
+    default: return "";
+  }
+}
+function renderSection(s){
+  return '<details class="card '+(s.alert?"alert":"")+'" id="sec-'+s.id+'"><summary>'+
+    '<span class="marker">'+s.icon+'</span>'+
+    '<span class="s-head"><span class="s-title">'+s.title+'</span><span class="s-sum">'+s.summary+'</span></span>'+
+    '<span class="chev">▶</span></summary>'+
+    '<div class="body">'+s.blocks.map(renderBlock).join("")+'</div></details>';
+}
+document.getElementById("sections").innerHTML = SECTIONS.map(renderSection).join("");
+document.getElementById("chips").innerHTML = SECTIONS.map(function(s){return '<a class="chip" href="#sec-'+s.id+'" data-id="'+s.id+'">'+s.tag+'</a>'}).join("");
+document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(e){
+  e.preventDefault(); var el=document.getElementById("sec-"+c.dataset.id);
+  el.open=true; el.scrollIntoView({behavior:"smooth",block:"start"});
+})});
+document.getElementById("contacts").innerHTML = CONTACTS.map(function(c){
+  var tel=(c.tel||"").trim(); var tag=tel?"a":"div"; var href=tel?' href="tel:'+tel+'"':"";
+  return "<"+tag+' class="contact '+(c.urgent?"urgent":"")+'"'+href+'>'+
+    '<span class="ci">'+c.icon+'</span>'+
+    '<span><span class="cname">'+c.name+'</span><br><span class="cmeta">'+c.meta+'</span></span>'+
+    '<span class="cval">'+c.value+'</span></'+tag+'>';
+}).join("");
+var scrim=document.getElementById("scrim"), sheet=document.getElementById("sheet");
+function openSheet(){scrim.classList.add("open");sheet.classList.add("open")}
+function closeSheet(){scrim.classList.remove("open");sheet.classList.remove("open")}
+document.getElementById("sosBtn").addEventListener("click",openSheet);
+scrim.addEventListener("click",closeSheet);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet()});
+
+/* ---- Password gate ----
+   Set your password by replacing PW_HASH below with the SHA-256 hash of your chosen
+   password. To generate a new hash, run in a terminal:
+     printf %s "your-password" | shasum -a 256
+   Default password is: welcome-jax-jojo
+   Note: this is a light deterrent, not real security — anyone technical can read the
+   page source. The door code, medication details, and phone numbers are shared separately. */
+var PW_HASH = "77b071d53676f537afe5f3768dafdafd10bd0283904340d0c95bde0798164c1e";
+var gateEl=document.getElementById("gate");
+var gateForm=document.getElementById("gateForm");
+var gatePw=document.getElementById("gatePw");
+var gateErr=document.getElementById("gateErr");
+function unlock(){
+  sessionStorage.setItem("houseUnlocked","1");
+  document.documentElement.className=document.documentElement.className.replace(/\blocked\b/,"").trim();
+}
+if(sessionStorage.getItem("houseUnlocked")==="1"){ unlock(); }
+else if(gatePw){ gatePw.focus(); }
+async function sha256Hex(str){
+  var buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");
+}
+if(gateForm){
+  gateForm.addEventListener("submit",async function(e){
+    e.preventDefault();
+    var hex=await sha256Hex(gatePw.value);
+    if(hex===PW_HASH){ gateErr.textContent=""; unlock(); }
+    else{ gateErr.textContent="That password didn’t match — try again."; gatePw.select(); }
+  });
+}
+</script>
+</body>
+</html>
