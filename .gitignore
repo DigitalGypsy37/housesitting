@@ -1,0 +1,6 @@
+# Never commit the full-detail print version (door code, Wi-Fi password, phone numbers).
+# This repo is published publicly via GitHub Pages — keep secrets out.
+*.pdf
+
+# Local tooling / preview config
+.claude/

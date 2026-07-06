@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>House Guide · for Natalie</title>
+<script>
+  // Lock immediately (before the page paints) unless already unlocked this session.
+  if (sessionStorage.getItem("houseUnlocked") !== "1") {
+    document.documentElement.className += " locked";
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<!-- ============================================================= -->
+<!--  HOMEOWNER — FILL IN YOUR DETAILS                             -->
+<!--  Everything is written text now (no audio). Just replace the  -->
+<!--  bits in [SQUARE BRACKETS] below with your real details, and  -->
+<!--  add phone numbers to the CONTACTS list.                      -->
+<!-- ============================================================= -->
+
+<style>
+  :root{
+    --paper:#F3F5EF;--card:#FFF;--ink:#1E3A32;--ink-soft:#516459;
+    --honey:#D9992B;--honey-deep:#A9711A;--clay:#BC5142;--clay-bg:#F8ECE9;
+    --sage-bg:#E9EFE6;--line:#E2E7DD;--scrim:rgba(20,32,27,.52);
+    --shadow:0 1px 2px rgba(30,58,50,.06),0 6px 20px rgba(30,58,50,.07);--radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Instrument Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.58;
+    -webkit-font-smoothing:antialiased;padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+  .wrap{max-width:540px;margin:0 auto;padding:0 18px}
+
+  .topbar{position:sticky;top:0;z-index:20;background:rgba(243,245,239,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;gap:10px;height:54px}
+  .brandmark{width:30px;height:30px;border-radius:9px;flex:0 0 auto;background:var(--ink);
+    color:var(--paper);display:grid;place-items:center;font-family:"Fraunces",serif;font-weight:600;font-size:16px}
+  .brandtxt{font-weight:600}
+  .brandtxt small{display:block;font-weight:400;font-size:12px;color:var(--ink-soft)}
+
+  .hero{padding:28px 0 4px}
+  .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--honey-deep);margin:0 0 12px}
+  .hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(29px,8.5vw,38px);
+    line-height:1.1;letter-spacing:-.01em;margin:0 0 12px}
+  .hero h1 em{font-style:italic;color:var(--honey-deep)}
+  .hero p{margin:0;color:var(--ink-soft);font-size:16px}
+  .dates{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:var(--sage-bg);
+    border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+  .howto{margin:16px 0 2px;font-size:14px;color:var(--ink-soft)}
+  .howto b{color:var(--ink)}
+
+  .chips{display:flex;gap:8px;overflow-x:auto;padding:16px 18px 6px;margin:6px -18px 0;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    border-radius:999px;padding:8px 14px;font-size:13.5px;font-weight:500;white-space:nowrap;
+    text-decoration:none;cursor:pointer;transition:border-color .15s,color .15s}
+  .chip:hover{border-color:var(--honey);color:var(--honey-deep)}
+
+  .daily{margin:18px 0 6px;background:var(--ink);color:#EAF1EC;border-radius:var(--radius);
+    padding:20px;box-shadow:var(--shadow)}
+  .daily h2{font-family:"Fraunces",serif;font-weight:600;font-size:19px;margin:0 0 12px;color:#fff}
+  .daily ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .daily li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .tick{flex:0 0 auto;width:22px;height:22px;border-radius:7px;margin-top:1px;
+    background:rgba(217,153,43,.18);border:1px solid rgba(217,153,43,.55);color:var(--honey);
+    display:grid;place-items:center;font-size:12px;font-weight:700}
+  .daily li b{color:#fff}
+
+  .sections{margin-top:20px;display:grid;gap:12px}
+  details.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;align-items:center;gap:13px;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  .marker{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:var(--sage-bg);
+    display:grid;place-items:center;font-size:19px}
+  .card.alert .marker{background:var(--clay-bg)}
+  .s-head{flex:1 1 auto;min-width:0}
+  .s-title{font-weight:600;font-size:16.5px}
+  .s-sum{font-size:13.5px;color:var(--ink-soft);margin-top:1px;overflow:hidden;
+    text-overflow:ellipsis;white-space:nowrap}
+  .chev{flex:0 0 auto;color:var(--ink-soft);transition:transform .2s;font-size:13px}
+  details[open] .chev{transform:rotate(90deg)}
+  .body{padding:0 18px 18px}
+  .body>*+*{margin-top:12px}
+
+  .note{font-size:15px}.note.muted{color:var(--ink-soft)}
+  .b{color:var(--honey-deep);font-style:italic;font-weight:600}
+  ul.pts{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  ul.pts li{position:relative;padding-left:19px;font-size:15px}
+  ul.pts li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;
+    border-radius:50%;background:var(--honey)}
+  .callout{border-radius:13px;padding:13px 15px;font-size:14.5px}
+  .callout .ct{font-weight:600;margin-bottom:5px}
+  .callout.warn{background:var(--clay-bg);border:1px solid #EAD2CD}.callout.warn .ct{color:var(--clay)}
+  .callout.soft{background:var(--sage-bg)}.callout.soft .ct{color:var(--honey-deep)}
+  .callout p{margin:0 0 6px}.callout p:last-child{margin:0}
+
+  .sos{position:fixed;left:0;right:0;bottom:0;z-index:30;
+    padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top,var(--paper) 62%,rgba(243,245,239,0));pointer-events:none}
+  .sos .wrap{max-width:540px;margin:0 auto;pointer-events:auto}
+  .sosbtn{width:100%;border:0;cursor:pointer;background:var(--clay);color:#fff;border-radius:15px;
+    padding:15px;font-family:inherit;font-size:16px;font-weight:600;display:flex;align-items:center;
+    justify-content:center;gap:10px;box-shadow:0 6px 22px rgba(188,81,66,.34)}
+  .sosbtn:active{transform:translateY(1px)}
+  .sheet-scrim{position:fixed;inset:0;z-index:40;background:var(--scrim);opacity:0;visibility:hidden;transition:opacity .22s}
+  .sheet-scrim.open{opacity:1;visibility:visible}
+  .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--paper);
+    border-radius:22px 22px 0 0;padding:8px 0 calc(20px + env(safe-area-inset-bottom));
+    transform:translateY(100%);transition:transform .28s cubic-bezier(.22,1,.36,1);max-height:86vh;overflow-y:auto}
+  .sheet.open{transform:translateY(0)}
+  .grab{width:40px;height:4px;border-radius:99px;background:#CBD5C7;margin:8px auto 6px}
+  .sheet h2{font-family:"Fraunces",serif;font-weight:600;font-size:22px;margin:6px 18px 2px}
+  .sheet .lead{margin:0 18px 12px;color:var(--ink-soft);font-size:14px}
+  .contact{display:flex;align-items:center;gap:14px;margin:0 12px;padding:13px 12px;border-radius:14px;
+    text-decoration:none;color:var(--ink)}
+  .contact+.contact{border-top:1px solid var(--line);border-radius:0}
+  .contact .ci{width:38px;height:38px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
+    font-size:18px;background:var(--sage-bg)}
+  .contact.urgent .ci{background:var(--clay-bg)}
+  .contact .cname{font-weight:600;font-size:15.5px}
+  .contact .cmeta{font-size:13.5px;color:var(--ink-soft)}
+  .contact .cval{margin-left:auto;font-weight:600;color:var(--honey-deep);font-size:14px;text-align:right}
+  .sheet .fineprint{margin:14px 20px 0;font-size:12.5px;color:var(--ink-soft)}
+
+  footer{padding:24px 0 6px;text-align:center;color:var(--ink-soft);font-size:13px}
+  footer .heart{color:var(--clay)}
+  :focus-visible{outline:2.5px solid var(--honey);outline-offset:2px;border-radius:6px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  /* ---- Password gate ---- */
+  html.locked{overflow:hidden}
+  html.locked body>*:not(#gate){display:none!important}
+  #gate{position:fixed;inset:0;z-index:100;background:var(--paper);
+    display:none;place-items:center;padding:24px}
+  html.locked #gate{display:grid}
+  .gate-card{width:100%;max-width:360px;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 24px;text-align:center}
+  .gate-card .brandmark{margin:0 auto 16px}
+  .gate-card h1{font-family:"Fraunces",serif;font-weight:600;font-size:24px;margin:0 0 6px}
+  .gate-card p{margin:0 0 18px;color:var(--ink-soft);font-size:14.5px}
+  .gate-card form{display:flex;flex-direction:column;gap:10px}
+  .gate-card input{font-family:inherit;font-size:16px;padding:13px 15px;border:1px solid var(--line);
+    border-radius:13px;background:var(--paper);color:var(--ink);text-align:center}
+  .gate-card button{font-family:inherit;font-size:16px;font-weight:600;padding:13px;border:0;
+    border-radius:13px;background:var(--ink);color:var(--paper);cursor:pointer}
+  .gate-card button:active{transform:translateY(1px)}
+  .gate-err{min-height:18px;font-size:13.5px;color:var(--clay);font-weight:500}
+</style>
+</head>
+<body>
+
+<div id="gate" role="dialog" aria-modal="true" aria-label="Password required">
+  <div class="gate-card">
+    <div class="brandmark">H</div>
+    <h1>The House</h1>
+    <p>This guide is private. Enter the password Leah &amp; Leroy shared with you.</p>
+    <form id="gateForm">
+      <input id="gatePw" type="password" inputmode="text" autocomplete="off"
+             autocapitalize="off" spellcheck="false" placeholder="Password" aria-label="Password" />
+      <button type="submit">Unlock</button>
+      <div class="gate-err" id="gateErr" role="alert"></div>
+    </form>
+  </div>
+</div>
+
+<div class="topbar"><div class="wrap">
+  <div class="brandmark">H</div>
+  <div class="brandtxt">The House<small>Care guide for Natalie</small></div>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Welcome &amp; thank you</p>
+    <h1>Hi Natalie — <em>make yourself at home.</em></h1>
+    <p>Everything you need is written below. Tap any card to open it.</p>
+    <div class="dates">📅 <span><b>Trip:</b> July 7 – 23 · 17 days</span></div>
+    <p class="howto">The red button at the bottom is for emergencies — always there.</p>
+  </header>
+
+  <nav class="chips" id="chips" aria-label="Jump to a topic"></nav>
+
+  <section class="daily" aria-label="Daily checklist">
+    <h2>Every day, in short</h2>
+    <ul>
+      <li><span class="tick">✓</span><span><b>Feed twice a day</b> — freshly poured (Luna won't eat stale); keep water topped up.</span></li>
+      <li><span class="tick">✓</span><span><b>Scoop &amp; shuffle the litter</b> — once a day.</span></li>
+      <li><span class="tick">✓</span><span><b>Keep doors shut</b> — both cats are indoor-only.</span></li>
+      <li><span class="tick">✓</span><span><b>Quick check</b> — eating, drinking, acting normal?</span></li>
+    </ul>
+  </section>
+
+  <main class="sections" id="sections"></main>
+  <footer>Made with a little <span class="heart">♥</span> for a smooth 17 days.</footer>
+</div>
+
+<div class="sos"><div class="wrap">
+  <button class="sosbtn" id="sosBtn" aria-haspopup="dialog">🚑 In an emergency — tap here</button>
+</div></div>
+<div class="sheet-scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Emergency contacts">
+  <div class="grab"></div>
+  <h2>Emergency &amp; contacts</h2>
+  <p class="lead">Tap a number to call. When unsure, reach out.</p>
+  <div id="contacts"></div>
+  <p class="fineprint">We're in Ireland/Scotland, about <b>8 hours ahead</b> of California — but for anything urgent, call any time.</p>
+</aside>
+
+<script>
+/* ---- YOUR CONTENT: swap the [BRACKETS] for real details ---- */
+
+const CONTACTS = [
+  { icon:"📞", name:"Leroy Hunnewell",         meta:"Homeowner",                  value:"shared separately", tel:"", urgent:false },
+  { icon:"📞", name:"Leah Hunnewell",          meta:"Partner",                    value:"shared separately", tel:"", urgent:false },
+  { icon:"🏥", name:"Animal Emergency & Specialty Center", meta:"24-hr emergency vet · 6425 S Virginia St", value:"(775) 851-3600", tel:"+17758513600", urgent:true },
+  { icon:"🐾", name:"Timberline Veterinarian", meta:"Regular vet · a couple blocks away", value:"(775) 882-1686", tel:"+17758821686", urgent:false },
+  { icon:"🏠", name:"Seth Johnson",            meta:"Nephew · lives a block away", value:"shared separately", tel:"", urgent:false },
+];
+
+// In prose, wrap the bits you'll personalise like this:  <span class="b">[LIKE THIS]</span>
+const SECTIONS = [
+  { id:"cats", tag:"Cats", icon:"🐈", alert:false,
+    title:"Kashka & Luna", summary:"Feeding, water, litter & Luna's tummy",
+    blocks:[
+      { type:"note", text:"Both are indoor-only. Watch the doors going in and out: Kashka is a bit of an escape artist (and her collar's gone missing right now). If she does slip out, shake the treat bag from the tan cubby to bring her back." },
+      { type:"prose", html:'<b>Feeding.</b> Feed both cats <b>twice a day</b>, and pour it <b>fresh</b> — Luna won’t touch food that’s been sitting out for an hour or so. The food bags are in the great room. Give <b>Kashka only a little wet food</b> (she’s watching her weight); Luna can have a bit more.' },
+      { type:"prose", html:'<b>Supplement.</b> Both get a calming supplement mixed in a small bowl with a little water — Luna likes hers with just water, Kashka with a bit of wet food stirred in. The wet food lives in the fridge.' },
+      { type:"prose", html:'<b>Water.</b> Keep their water dish/fountain topped up with fresh water. To refill the fountain, lift it up by the hose and fill inside (or just pour fresh water in).' },
+      { type:"prose", html:'<b>Litter.</b> There are boxes for each cat plus a spare (a couple were just added), in the <b>great room</b>. They’re the pellet kind with a pad underneath and a little guard to stop the pellets scattering — solid waste stays on top, pee drains through onto the pad.' },
+      { type:"pts", items:[
+        "Each day, scoop the solid waste off the top, then shuffle the pellets so the little bits fall through to the pad below.",
+        "Pull the tray out and swap the pee pad <b>once or twice a week</b> (at least weekly, or it starts to smell), and top up the pellets when low.",
+        "Everything is in one spot: spare pellets, pads, and trash bags are all in the tan cubby by the boxes.",
+        "Bag the waste and used pads and drop them in the main trash can outside — or the indoor can if that’s easier (it may smell a bit until it goes out, but either’s fine).",
+      ]},
+      { type:"callout", tone:"warn", title:"🤍 Luna sometimes throws up", lines:[
+        "<b>No worry</b> if it's a one-off hairball and she's otherwise normal — just clean it up.",
+        "<b>Call the vet</b> (button below) if she vomits repeatedly, won't eat or drink, hides all day, or seems very lethargic. Trust your gut."
+      ]},
+    ]},
+  { id:"door", tag:"Front door", icon:"🔑", alert:false,
+    title:"Front door — smart lock", summary:"Auto-locks · your code · a battery tip",
+    blocks:[
+      { type:"prose", html:'Your keypad code is <b>shared with you separately</b> — enter it to get in. The lock is automatic: once it’s locked, it re-locks itself after about <b>5 minutes</b>, so you don’t need to lock up behind you.' },
+      { type:"prose", html:'Your code works from <b>July 6 through July 27</b> — we’ve padded a couple of days on each end in case our return gets delayed.' },
+      { type:"callout", tone:"warn", title:"🔋 If the keypad won't respond", lines:[
+        "The battery can occasionally jiggle loose. If you’re at the front door and the keypad isn’t reacting, give it a quick, <b>firm tap right over the keypad</b> on the outside — that reconnects the battery and it should wake right up.",
+        "Still no luck? Call us with the emergency button below."
+      ]},
+    ]},
+  { id:"mail", tag:"Mail", icon:"📮", alert:false,
+    title:"Mail & packages", summary:"Where it comes, where to stack it",
+    blocks:[
+      { type:"prose", html:'The mailbox is at the <b>front door</b>, just to the right of the Ring camera. Grab the mail every couple of days so it doesn’t pile up, and leave it anywhere handy inside.' },
+    ]},
+  { id:"trash", tag:"Trash", icon:"🗑️", alert:false,
+    title:"Garbage & recycling", summary:"Thursdays — out Wednesday evening",
+    blocks:[
+      { type:"prose", html:'Waste Management picks up on <b>Thursday mornings</b> (around 8am), so put the bins out <b>Wednesday evening</b> the night before.' },
+      { type:"pts", items:[
+        "<b>Thu, July 9</b> — trash + recycling (out Wed the 8th)",
+        "<b>Thu, July 16</b> — trash only (out Wed the 15th)",
+        "<b>Thu, July 23</b> — trash + recycling (out Wed the 22nd)",
+      ]},
+      { type:"prose", html:'The bins live on the <b>front driveway</b>, just behind the trailer. On collection day, roll them out to the curb <b>in front of the trailer</b>.' },
+    ]},
+  { id:"patio", tag:"Cooler", icon:"❄️", alert:false,
+    title:"Swamp cooler", summary:"Fan or pump · fill, then off · towel for the leak",
+    blocks:[
+      { type:"prose", html:'The cooler is in the <b>great-room window</b>. For just moving air, run the <b>fan</b>; for actual cool air, also switch on the <b>pump</b> (it runs water over the pads). There’s a <b>remote</b> too, kept by the water.' },
+      { type:"pts", items:[
+        "Out on the patio, turn the <b>green-handle faucet</b> on just slightly and let it fill for about <b>30 minutes</b>, then turn it back off.",
+        "Inside, use the <b>fan</b> for air or add the <b>pump</b> for cool air (or just use the remote from the couch).",
+      ]},
+      { type:"callout", tone:"warn", title:"🚰 The faucet has a slow leak", lines:[
+        "There’s a <b>towel</b> under it to catch the drip. When it gets wet, swap it for the dry one and lay the wet one out to dry.",
+        "We’ve been chasing this leak for a while — sorry for the hassle!"
+      ]},
+    ]},
+  { id:"tv", tag:"TV", icon:"📺", alert:false,
+    title:"TV", summary:"77-inch pull-down over the fireplace",
+    blocks:[
+      { type:"prose", html:'The TV is the big <b>77-inch</b> one in the great room, mounted on the chimney above the fireplace. Pull it down with the <b>two handles</b> for comfortable viewing (watch the cable — it can stick) — or just leave it down the whole time.' },
+      { type:"prose", html:'Use the <b>LG remote</b> that goes with the TV. The <b>red button (top-left)</b> turns it on, then press <b>Home</b> to bring up the smart menu and pick Netflix, Jellyfin, and so on. You don’t need to touch the inputs unless you’re watching a Blu-ray.' },
+      { type:"pts", items:[
+        "<b>Netflix</b> is signed in on our subscription — help yourself.",
+        "There’s also a big library of movies on <b>Plex</b> and <b>Jellyfin</b>.",
+        "You can also <b>cast to it</b> from your phone — it’ll ask you to sign in.",
+      ]},
+      { type:"callout", tone:"warn", title:"📺 If you raise it back up, go slowly", lines:[
+        "Hold the handle firmly and slide it gently flat against the chimney.",
+        "Hold it briefly at the top — it bounces a little before it latches, so don’t let go until it’s caught."
+      ]},
+    ]},
+  { id:"wifi", tag:"Wi-Fi", icon:"📶", alert:false,
+    title:"Wi-Fi & internet", summary:"Password + how to reboot if it drops",
+    blocks:[
+      { type:"prose", html:'Network: <b>R37</b>. Password: <b>shared with you separately</b>.' },
+      { type:"prose", html:'There are two routers so the signal covers the whole house: the <b>main router</b> is in the great room, to the right of the TV, and a <b>second one</b> that carries the signal is in the front room as you walk in, underneath the small TV.' },
+      { type:"prose", html:'<b>If the internet goes down,</b> reboot both routers in this order:' },
+      { type:"pts", items:[
+        "Power <b>off</b> the main router in the great room.",
+        "Then power <b>off</b> the second router in the front room (under the small TV).",
+        "Wait about <b>2 minutes</b>.",
+        "Turn the <b>great-room</b> router back on first.",
+        "Then turn the <b>front-room</b> router back on.",
+        "Give them about <b>5 minutes</b> to boot up — the Wi-Fi should be back.",
+      ]},
+    ]},
+  { id:"lights", tag:"Lights", icon:"💡", alert:false,
+    title:"Lights & cameras", summary:"Wall switches work — app is optional",
+    blocks:[
+      { type:"note", text:"Nothing to learn: the automatic lighting has been switched off, so just use the normal wall switches." },
+      { type:"callout", tone:"soft", title:"About the cameras", lines:[
+        "Two cameras, both <b>outside</b> — a <b>Ring</b> at the front door and an <b>Arlo</b> covering the back patio/yard for movement. Nothing indoors.",
+        "If the backyard camera makes you at all uncomfortable, just say the word and we’ll switch it off."
+      ]},
+    ]},
+  { id:"vacuum", tag:"Vacuum", icon:"🤖", alert:false,
+    title:"Robot vacuum", summary:"Send it home with the dock button",
+    blocks:[
+      { type:"prose", html:'A robot vacuum runs on a schedule. If it’s in your way or the noise bugs you, press the <b>dock button</b> on it and it’ll head straight back to its base.' },
+      { type:"prose", html:'Want to change when it runs? We can share the app and passcode — just ask.' },
+    ]},
+  { id:"blinds", tag:"Blinds", icon:"🪟", alert:false,
+    title:"Blinds", summary:"Left-side blinds open & close on a timer",
+    blocks:[
+      { type:"prose", html:'The <b>left-side</b> blinds open on their own in the morning (~7am) and close around <b>4pm</b> to keep the afternoon heat out. Close them by hand anytime, or we can turn the timer off.' },
+    ]},
+  { id:"laundry", tag:"Laundry", icon:"🧺", alert:false,
+    title:"Laundry", summary:"Detergent sheets out — remodel caveat",
+    blocks:[
+      { type:"prose", html:'Laundry <b>detergent sheets</b> and dryer sheets are set out for you.' },
+      { type:"prose", html:'Heads-up: with the bathroom remodel, the washer/dryer may get pulled out partway through your stay. If that happens, you’re welcome to use the washer/dryer at <b>Julie’s mom’s</b>.' },
+    ]},
+  { id:"remodel", tag:"Remodel", icon:"🔨", alert:false,
+    title:"Bathroom remodel", summary:"Cheney may be by — he'll text first",
+    blocks:[
+      { type:"prose", html:'<b>Cheney</b> is remodeling the bathroom and may be around, likely starting <b>Monday or Tuesday</b> (pulling out the washer, dryer, and toilet). He’ll <b>text you before he comes and goes</b> so he’s never a surprise.' },
+      { type:"prose", html:'If he has any questions about the house, just have him contact us.' },
+    ]},
+  { id:"goodtoknow", tag:"Good to know", icon:"📝", alert:false,
+    title:"Good to know", summary:"A few little house quirks",
+    blocks:[
+      { type:"pts", items:[
+        "<b>Sliding glass door</b> can be finicky — give it a firm slide to get it fully closed.",
+        "<b>Guest bathroom water</b> may run brown for a second (old pipes) — just run it a few seconds to clear.",
+        "That bathroom’s <b>weather strip</b> is loose — don’t push it all the way over or it pops off.",
+        "No central air, so nothing to set — you’re unlikely to get cold; open a window if it’s stuffy.",
+        "<b>Bedroom:</b> one outlet doesn’t work — there’s an extension cord for the rest.",
+        "<b>Kitchen:</b> no coffee maker — there’s a kettle + pour-over. The dishwasher’s weak, so rinse food off first or it bakes on.",
+      ]},
+      { type:"prose", html:'And truly — <b>make yourself at home</b>: help yourself to the food, coffee, and the liquor cabinet.' },
+    ]},
+  { id:"trouble", tag:"If stuck", icon:"🧰", alert:true,
+    title:"If something goes wrong", summary:"Locked out, power, leaks, sick cat",
+    blocks:[
+      { type:"pts", items:[
+        "<b>Cat unwell</b> → see Luna's note; not eating or hiding all day → call the vet.",
+        "<b>Cat slips outside</b> → shake the bag of treats to lure them back in.",
+        "<b>Keypad won't respond</b> → give it a firm tap right over the keypad to reconnect the battery.",
+        "<b>Power out</b> → breaker box is outside on the back patio; if the whole street is dark it’s the utility, just wait.",
+        "<b>Leak</b> → the water shutoff is to the <b>left of the front door</b> (two holes in the ground); use the big church-key tool lying on the gravel nearby to turn it off, then text us.",
+      ]},
+      { type:"note", text:"In doubt: snap a photo and text us. Thank you again — it means a lot. 🙏", muted:true },
+    ]},
+];
+
+/* ---- rendering (no need to edit) ---- */
+function renderBlock(b){
+  switch(b.type){
+    case "prose": return '<p class="note">'+b.html+'</p>';
+    case "note": return '<p class="note '+(b.muted?"muted":"")+'">'+b.text+'</p>';
+    case "pts": return '<ul class="pts">'+b.items.map(function(i){return "<li>"+i+"</li>"}).join("")+'</ul>';
+    case "callout": return '<div class="callout '+(b.tone==="warn"?"warn":"soft")+'"><div class="ct">'+b.title+'</div>'+b.lines.map(function(l){return "<p>"+l+"</p>"}).join("")+'</div>';
+    default: return "";
+  }
+}
+function renderSection(s){
+  return '<details class="card '+(s.alert?"alert":"")+'" id="sec-'+s.id+'"><summary>'+
+    '<span class="marker">'+s.icon+'</span>'+
+    '<span class="s-head"><span class="s-title">'+s.title+'</span><span class="s-sum">'+s.summary+'</span></span>'+
+    '<span class="chev">▶</span></summary>'+
+    '<div class="body">'+s.blocks.map(renderBlock).join("")+'</div></details>';
+}
+document.getElementById("sections").innerHTML = SECTIONS.map(renderSection).join("");
+document.getElementById("chips").innerHTML = SECTIONS.map(function(s){return '<a class="chip" href="#sec-'+s.id+'" data-id="'+s.id+'">'+s.tag+'</a>'}).join("");
+document.querySelectorAll(".chip").forEach(function(c){c.addEventListener("click",function(e){
+  e.preventDefault(); var el=document.getElementById("sec-"+c.dataset.id);
+  el.open=true; el.scrollIntoView({behavior:"smooth",block:"start"});
+})});
+document.getElementById("contacts").innerHTML = CONTACTS.map(function(c){
+  var tel=(c.tel||"").trim(); var tag=tel?"a":"div"; var href=tel?' href="tel:'+tel+'"':"";
+  return "<"+tag+' class="contact '+(c.urgent?"urgent":"")+'"'+href+'>'+
+    '<span class="ci">'+c.icon+'</span>'+
+    '<span><span class="cname">'+c.name+'</span><br><span class="cmeta">'+c.meta+'</span></span>'+
+    '<span class="cval">'+c.value+'</span></'+tag+'>';
+}).join("");
+var scrim=document.getElementById("scrim"), sheet=document.getElementById("sheet");
+function openSheet(){scrim.classList.add("open");sheet.classList.add("open")}
+function closeSheet(){scrim.classList.remove("open");sheet.classList.remove("open")}
+document.getElementById("sosBtn").addEventListener("click",openSheet);
+scrim.addEventListener("click",closeSheet);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet()});
+
+/* ---- Password gate ----
+   Set your password by replacing PW_HASH below with the SHA-256 hash of your chosen
+   password. To generate a new hash, run in a terminal:
+     printf %s "your-password" | shasum -a 256
+   Default password is: welcome-natalie
+   Note: this is a light deterrent, not real security — anyone technical can read the
+   page source. The door code, Wi-Fi password, and phone numbers are shared separately. */
+var PW_HASH = "068757c5709a4b3049ffb0199197b3ed34720139b06819876f921acd4b6840b6";
+var gateEl=document.getElementById("gate");
+var gateForm=document.getElementById("gateForm");
+var gatePw=document.getElementById("gatePw");
+var gateErr=document.getElementById("gateErr");
+function unlock(){
+  sessionStorage.setItem("houseUnlocked","1");
+  document.documentElement.className=document.documentElement.className.replace(/\blocked\b/,"").trim();
+}
+if(sessionStorage.getItem("houseUnlocked")==="1"){ unlock(); }
+else if(gatePw){ gatePw.focus(); }
+async function sha256Hex(str){
+  var buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");
+}
+if(gateForm){
+  gateForm.addEventListener("submit",async function(e){
+    e.preventDefault();
+    var hex=await sha256Hex(gatePw.value);
+    if(hex===PW_HASH){ gateErr.textContent=""; unlock(); }
+    else{ gateErr.textContent="That password didn’t match — try again."; gatePw.select(); }
+  });
+}
+</script>
+</body>
+</html>
